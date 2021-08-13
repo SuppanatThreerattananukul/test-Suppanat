@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "test-Suppanat",
+    "slug": "test-Suppanat",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "test-Suppanat"
+}
