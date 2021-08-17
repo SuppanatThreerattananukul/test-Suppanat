@@ -1,21 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
+import home from './component/Home';
+import login from './component/Login';
+import listView from './component/ListView';
+import splashScreen from './component/splashScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = createStackNavigator(
+  {
+    home: {
+      screen: home,
+      navigationOptions: {
+        header: null,
+      },
+    },
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    login: {
+      screen: login,
+      navigationOptions: {
+        header: null,
+      },
+    },
+
+    listView: {
+      screen: listView,
+      navigationOptions: {
+        header: null,
+      },
+    },
   },
-});
+  { initialRouteName: 'login' }
+);
+
+//Not show warning
+console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
+console.disableYellowBox = true;
+
+
+export default createAppContainer( createSwitchNavigator(
+  {
+    splashScreen: splashScreen,
+    App: App,
+  },
+  {
+    initialRouteName: 'splashScreen',
+  }
+));
